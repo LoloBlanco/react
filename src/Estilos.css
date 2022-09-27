@@ -1,0 +1,13 @@
+#navbarestilos{
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    
+}
+
+
+#cuerpo{
+    display: flex;
+    color: black;
+    justify-content: center;
+}
