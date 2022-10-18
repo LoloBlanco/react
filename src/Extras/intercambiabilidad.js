@@ -1,7 +1,9 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
-import { useState} from 'react'
+import { useState } from 'react'
+import { ItemCount } from '../Entregable/ItemCount/ItemCount';
+
 
 
 
@@ -23,11 +25,13 @@ const InputCount=()=>{
 }
 
 const ButtonCount = ({handleInter})=>{
-    return <Button variant="primary" onClick={handleInter}>Agregar al carrito</Button>
+    return <div><Button variant="primary" onClick={handleInter}>Agregar al carrito</Button>
+    </div>
+    
 }
 
 
-const Intercambiabilidad = () => {
+const Intercambiabilidad = (prod) => {
 
     
     const [inputType, setInputType] = useState('button')
