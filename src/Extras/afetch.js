@@ -1,3 +1,4 @@
+
 const productos = [
     { id: '1', name: 'Consola Microsoft Xbox Series S Ssd 512gb White', price: 800, stock: 10, categoria: 'Consolas', foto:'https://www.unicom.com.uy/WS/Fotos_WEB/Articulos/GMXBOXS512W/1200x1200_1.JPG'},
     { id: '2', name: 'Consola Nintendo Switch Grey', price: 850, stock: 20, categoria: 'Consolas', foto:'https://www.unicom.com.uy/WS/Fotos_WEB/Articulos/GNSW2/1200x1200_1.JPG' },
@@ -6,12 +7,22 @@ const productos = [
     { id: '5', name: 'Notebook Asus ROG G513qy-hf017t Ryzen 9 Rx 6800m', price: 3990, stock: 2, categoria: 'Computadoras', foto:'https://www.unicom.com.uy/WS/Fotos_WEB/Articulos/AAG513QY/1200x1200_1.JPG'}
 ]
 
-export const aFetch = () => {
-    return new Promise(( res , rej )=>{
+
+export const aFetch = (id) => {
+    return new Promise ((res)=>{
         setTimeout(()=>{
-            res(productos)
-        }, 3000)
-    }) 
-} 
+            res(id ? productos.find(prod =>prod.id === id) : productos)
+            console.log(id)
+            }, 3000)
+       
+        }
+            
+        
+    )}
+
+
+
+
+
 
 
