@@ -32,13 +32,25 @@ export const Contenido = () => {
     return (
        <>
         <div>     
-           <h3>GamerWorld</h3>
+           <h3>Gamer World</h3>
         </div> 
                { loading ? 
-                <h2>Cargando...</h2> 
+                   <div class="spinner-border" role="status">
+          
+                   </div> 
         
                     :
-                <ProductoLista productos={productos}/>
+                    <div style={{
+                        display:'flex',
+                        
+                        justifyContent: 'center',
+                        flexDirection: 'column',
+                        padding: '20px',
+                        margin: '20px'            
+                }}>
+                        <ProductoLista productos={productos}/>
+                    </div>
+                
                
             }
         </>)

@@ -1,18 +1,22 @@
 #navbarestilos{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     justify-items: flex-end;
     font-size: 30px;    
-    background-color: aqua;
+    background-color: navy;
+
 }
 
 #cuerpo{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    color: gray;
-    background: rgb(242,143,0);        
+    color: white;
+    font-weight: bold;
+    background: rgb(38, 93, 135);        
 }
+
+
+
 #cuerpo h3{
     color: black;
     font-weight: bolder;
@@ -26,4 +30,16 @@
     color: black;
     font-weight: bolder;
     background: lightblue;        
+}
+
+#itemCount{
+    display: flex;
+    flex-direction: column;
+}
+
+#contador{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }

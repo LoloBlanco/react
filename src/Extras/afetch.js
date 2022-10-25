@@ -12,8 +12,7 @@ export const aFetch = (id) => {
     return new Promise ((res)=>{
         setTimeout(()=>{
             res(id ? productos.find(prod => prod.id === id) : productos)
-            console.log(id)
-            }, 3000)
+           }, 3000)
        
         }
             
