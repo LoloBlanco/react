@@ -3,8 +3,8 @@ import { CarroConst } from '../Context/CartContext'
 
 
 export const PaginaCarrito = () => {
-  const {cartList, total}= useContext(CarroConst)
-  //const {total}=useContext(CarroConst)
+  const {cartList, total, vaciarCarro}= useContext(CarroConst)
+
  
 
   
@@ -34,8 +34,9 @@ export const PaginaCarrito = () => {
         }
       
       </div>
-      <div>
-        {total}
+      <div id="cuerpo" style={{display:'flex',justifyContent:'center'}}>
+        TOTAL: $ {total}
+        <button onClick={vaciarCarro} type="button" class="btn btn-primary">VACIAR EL CARRO</button>
       </div>
     </>
 

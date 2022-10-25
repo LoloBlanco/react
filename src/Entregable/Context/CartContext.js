@@ -7,12 +7,21 @@ const CartContextProvider = ({children}) => {
   const [cartList, setCartList] = useState([])
   const [total, setTotal] = useState(0)
 
-  const sumar = (prod) => {
-    const tot = (parseInt(prod.cantidad)*parseInt(prod.price))
-    console.log(tot)
-    setTotal (total + tot)
+  const sumar = () => {
+    var tot = 0
+    cartList.map(el => {
+     tot += (parseInt(el.cantidad)*parseInt(el.price))
+    })
+    
+    
+    setTotal (tot)
     
   }
+
+  const vaciarCarro=() =>{
+    setCartList([])
+  }
+
 
   const isInCart = (itemId) => {
     return cartList.find(item => item.id === itemId)
@@ -25,13 +34,13 @@ const CartContextProvider = ({children}) => {
         if(el.id === producto.id)  {
           el.cantidad += producto.cantidad
         }
-        sumar(el)
         return(el)
       })
-    } else {
-      sumar(producto)
+    } else {      
       setCartList([...cartList, producto]);
+      console.log(cartList.length)
     }
+    sumar()
   }
         
   
@@ -40,6 +49,7 @@ const CartContextProvider = ({children}) => {
     <CarroConst.Provider value={{ 
       cartList,
       total,
+      vaciarCarro,
       addItem
     }}>
           
