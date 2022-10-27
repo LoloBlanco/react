@@ -1,6 +1,6 @@
 import '../../Estilos.css';
 import { useEffect, useState } from "react"
-import { aFetch } from "../../Extras/afetch"
+import {collection, where, query, getDocs, getFirestore} from "firebase/firestore"
 import { useParams } from 'react-router-dom';
 import ProductoLista from '../productoLista/productoLista';
 
@@ -16,26 +16,31 @@ export const Contenido = () => {
 
     useEffect(()=>{
         if (idCategoria) {
-            aFetch() 
-            .then(resSgte => setProductos(resSgte.filter(producto => producto.categoria === idCategoria )))
+            const db= getFirestore()
+            const queryCollection = collection(db, 'productos')
+            const queryFilter = query(queryCollection, where('categoria', '==', idCategoria))
+            getDocs(queryFilter)
+            .then(resp => setProductos(resp.docs.map(prod => ({id: prod.id, ...prod.data() })  )))
             .catch(err => console.log(err))
-            .finally(()=> setLoading(false))
-        } else {
-            aFetch() 
-            .then(resSgte => setProductos(resSgte))
+            .finally(() => setLoading(false))
+        }else{
+            const db= getFirestore()
+            const queryCollection = collection(db, 'productos')
+            getDocs(queryCollection)
+            .then(resp => setProductos(resp.docs.map(prod => ({id: prod.id, ...prod.data() })  )))
             .catch(err => console.log(err))
-            .finally(()=> setLoading(false))
+            .finally(() => setLoading(false))
         }
-      
-    }, [idCategoria])
+    },[idCategoria])
 
+  
     return (
        <>
         <div>     
            <h3>Gamer World</h3>
         </div> 
                { loading ? 
-                   <div class="spinner-border" role="status">
+                   <div className="spinner-border" role="status">
           
                    </div> 
         

@@ -47,10 +47,10 @@ const Producto = ({prod}) => {
                              :
                              <div >
                                  <Link to="/carrito">
-                                     <button type="button" class="btn btn-primary">Terminar compra</button>
+                                     <button type="button" className="btn btn-primary">Terminar compra</button>
                                      </Link><br></br>
                                  <Link to="/">
-                                     <button type="button" class="btn btn-primary">Continuar comprando</button>
+                                     <button type="button" className="btn btn-primary">Continuar comprando</button>
                                     </Link>
                              </div>
 

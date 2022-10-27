@@ -2,23 +2,35 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useEffect , useState, useContext } from 'react'
 import { aFetch } from "../../Extras/afetch"
+import {doc, getDoc, getFirestore} from "firebase/firestore"
 import Producto from '../producto/producto';
 
 
 
 export const Detalles = () => {
 
-
-   const {idProducto} = useParams() 
-   useEffect(()=>{
-    aFetch(idProducto)     
-    .then(resp => setProductos(resp))
-    .catch(err => console.log(err))
-    .finally(()=> setLoading(false))
-  })
-
-   const [ producto, setProductos ] = useState({})
+   const [ producto, setProducto ] = useState({})
    const [ loading, setLoading ] = useState(true)
+   const {idProducto} = useParams() 
+
+   useEffect(() => {
+    const db= getFirestore()
+    const queryDoc = doc(db, 'productos', idProducto)
+    getDoc(queryDoc)
+    .then(resp => setProducto({id: resp.id, ...resp.data()}))
+    .catch(err => console.log(err))
+    .finally(() => setLoading(false))
+  },[])
+  //  useEffect(()=>{
+  //   aFetch(idProducto)     
+  //   .then(resp => setProductos(resp))
+  //   .catch(err => console.log(err))
+  //   .finally(()=> setLoading(false))
+  // })
+
+
+
+ 
    
  
 
@@ -28,7 +40,7 @@ export const Detalles = () => {
     
     <div >
       { loading ? 
-        <div class="spinner-border" role="status">
+        <div className="spinner-border" role="status">
           
         </div>
       

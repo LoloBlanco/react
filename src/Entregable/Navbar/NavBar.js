@@ -7,7 +7,7 @@ import { useContext } from 'react';
 
 
 export const NavBar = (props) => {
-    const {cartList}= useContext(CarroConst)
+    const {cantidad} = useContext(CarroConst)
     const{logoIco, seccionUno, seccionDos, seccionTres, carro}= props;
     return <>
         <Navbar id="navbarestilos" >
@@ -24,8 +24,11 @@ export const NavBar = (props) => {
             <Nav>
             
                 <Link to="/carrito">
-                    {carro}
-                    <a href="#" className='badge'>{cartList.lenght}</a>
+                    <button type="button" className="btn btn-primary">
+                        {carro}
+                        <span className="badge badge-light">{cantidad}</span>
+                    </button>
+                    
                 </Link>
                 
               
