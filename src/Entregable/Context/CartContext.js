@@ -7,6 +7,7 @@ const CartContextProvider = ({children}) => {
   const [cartList, setCartList] = useState([])
   const [total, setTotal] = useState(0)
   const [cantidad, setCantidad] = useState(0)
+  const[cartListLength, setCartListLength] = useState(0)
 
   const sumar = () => {
     var tot = 0
@@ -27,6 +28,7 @@ const CartContextProvider = ({children}) => {
   useEffect(() => {
     sumar()
     totalItems()
+    setCartListLength(cartList.length)   
 
   })
 
@@ -34,6 +36,7 @@ const CartContextProvider = ({children}) => {
     setCartList([])
     setTotal(0)
     setCantidad(0)
+
   }
 
 
@@ -59,8 +62,9 @@ const CartContextProvider = ({children}) => {
         return(el)
       })
     } else { 
-          
+       
       setCartList([...cartList, producto]);
+      
     }
         
 
@@ -70,6 +74,7 @@ const CartContextProvider = ({children}) => {
   return (
     <CarroConst.Provider value={{ 
       cartList,
+      cartListLength,
       total,
       cantidad,
       vaciarCarro,
