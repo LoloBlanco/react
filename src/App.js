@@ -5,7 +5,7 @@ import {Contenido} from "./Entregable/Contenido/Contenido";
 import {NavBar} from "./Entregable/Navbar/NavBar";
 import {CartWidget} from "./Entregable/Cart/CartWidget";
 import {Logo} from "./Entregable/Logo/Logo";
-import CartContextProvider, { CarroConst } from './Entregable/Context/CartContext';
+import CartContextProvider from './Entregable/Context/CartContext';
 import {Detalles} from "./Entregable/Detalles/Detalles";
 import { PaginaCarrito } from "./Entregable/Cart/PaginaCarrito";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
